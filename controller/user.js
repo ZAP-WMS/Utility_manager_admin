@@ -1,6 +1,18 @@
 const User=require('../modals/user')
 let asyncHandler=require('express-async-handler')
 
+let userControler=asyncHandler(async(req,res)=>{
+    
+    let data=await User.find()
+    res.status(200).send({
+      users:data,
+      message:"all user is fetched successfully"
+    })
+
+})
+
+
+
 let registerControler=asyncHandler(async(req,res)=>{
         let firstName=req.body.firstName.substring(0,2)
         let lastName=req.body.lastName.substring(0,2)
@@ -44,4 +56,4 @@ loginController=asyncHandler(async(req,res)=>{
   })
 })
 
-module.exports={registerControler,loginController}
+module.exports={registerControler,loginController,userControler}
