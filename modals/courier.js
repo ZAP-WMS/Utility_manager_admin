@@ -47,6 +47,9 @@ const CourierSchema = new Schema(
     },
    
   },
+  {
+    versionKey: false
+}
  
 );
 

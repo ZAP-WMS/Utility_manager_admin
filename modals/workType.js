@@ -8,5 +8,8 @@ const worktypeSchema=mongoose.Schema({
 
     },
    
+},
+{
+    versionKey: false
 })
 module.exports=mongoose.model('TypeOfWork',worktypeSchema)

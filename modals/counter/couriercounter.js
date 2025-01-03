@@ -4,6 +4,8 @@ const CounterSchema = mongoose.Schema({
     type: Number,
     default: 0,
   },
+},{
+  versionKey: false
 });
 
 module.exports=mongoose.model('CourierCounter',CounterSchema);

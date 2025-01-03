@@ -1,6 +1,47 @@
 const User=require('../modals/user')
 let asyncHandler=require('express-async-handler')
 
+let userUpdateControler=asyncHandler(async(req,res)=>{
+    console.log('adjkhfj')
+    let f=await User.findById(req.params.id)
+    console.log('fjdkhfj')
+    if(f){
+       let f= await User.findByIdAndUpdate(req.params.id,req.body,{runValidators: true})
+        res.status(200).send({
+            message:"user is successfully updated",
+          
+           })
+    }
+    else{
+       throw new Error('user is not found')
+    }
+    
+  
+})
+let userDeleteControler=asyncHandler(async(req,res)=>{
+   
+    let f=await User.findById(req.params.id)
+   
+    if(f){
+       let f= await User.findByIdAndDelete(req.params.id)
+        res.status(200).send({
+            message:"user is successfully deleted",
+            data:f
+           })
+    }
+    else{
+       throw new Error('user is not found')
+    }
+    
+  
+})
+
+
+
+
+
+
+
 let userControler=asyncHandler(async(req,res)=>{
     
     let data=await User.find()
@@ -56,4 +97,4 @@ loginController=asyncHandler(async(req,res)=>{
   })
 })
 
-module.exports={registerControler,loginController,userControler}
+module.exports={registerControler,loginController,userControler,userDeleteControler,userUpdateControler}

@@ -24,6 +24,10 @@ const UserSchema = new Schema(
         },
     default:""
   }, 
+  access:{
+    type:[String],
+    required: [true, 'access is required'],
+  },
   password:{
       type:String,
       validate: {
@@ -51,6 +55,9 @@ const UserSchema = new Schema(
  }
    
   },
+  {
+    versionKey: false
+}
  
 );
 
